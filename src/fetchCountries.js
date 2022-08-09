@@ -1,11 +1,15 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 function fetchCountries(name) {
-  const LINK = 'https://restcountries.com/v3.1';
+  const URL = 'https://restcountries.com/v3.1';
   const FILTER_RESPONSE = 'name,capital,population,flags,languages';
 
-  return fetch(`${LINK}/name/${name}?fields=${FILTER_RESPONSE}`).then(
+  return fetch(`${URL}/name/${name}?fields=${FILTER_RESPONSE}`).then(
     response => {
       if (!response.ok) {
-        throw new Error(response.status);
+        const er = new Error();
+        erCode = response.status;
+        throw erCode;
       }
       return response.json();
     }

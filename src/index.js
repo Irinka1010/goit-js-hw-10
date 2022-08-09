@@ -25,16 +25,20 @@ function onSearch(ev) {
           'Too many matches found. Please enter a more specific name.'
         );
         return;
-      } else if (countriesArray.length > 2 && countriesArray.length < 11) {
+      } else if (countriesArray.length > 1 && countriesArray.length < 10) {
         showCreateListItem(countriesArray);
         return;
       } else if (countriesArray.length === 1) {
         showCreateCountryInfom(countriesArray);
         return;
+      } else {
+        Notify.failure('Unknown error');
       }
     })
     .catch(error => {
-      Notify.failure('Oops, there is no country with that name');
+      if (erCode === 404) {
+        Notify.failure('Oops, there is no country with that name');
+      }
     });
 }
 const showCreateListItem = countriesArray => {
