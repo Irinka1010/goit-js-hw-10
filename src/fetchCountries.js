@@ -6,8 +6,8 @@ function fetchCountries(name) {
     response => {
       if (!response.ok) {
         const er = new Error();
-        erCode = response.status;
-        throw erCode;
+        er.code = response.status;
+        throw er;
       }
       return response.json();
     }

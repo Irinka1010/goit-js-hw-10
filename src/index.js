@@ -35,9 +35,13 @@ function onSearch(ev) {
         Notify.failure('Unknown error');
       }
     })
-    .catch(error => {
-      if (erCode === 404) {
+    .catch(er => {
+      if (er.code === '404') {
         Notify.failure('Oops, there is no country with that name');
+
+        return;
+      } else {
+        Notify.failure('Unknown error');
       }
     });
 }
