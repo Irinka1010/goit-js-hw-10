@@ -1,5 +1,3 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
 function fetchCountries(name) {
   const URL = 'https://restcountries.com/v3.1';
   const FILTER_RESPONSE = 'name,capital,population,flags,languages';
